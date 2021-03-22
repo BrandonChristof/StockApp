@@ -8,12 +8,7 @@ def index(request):
         ticker = request.POST["stockTicker"]
         data = getStockData(ticker)
         print(data)
-        return render(request, "stockapp/stockpage.html",  {"title": data["name"],
-                                                            "name": data["name"],
-                                                            "price": data["price"],
-                                                            "volume": data["volume"],
-                                                            "marketcap": data["marketcap"],
-                                                            "logo": data["logolink"]})
+        return render(request, "stockapp/stockpage.html", {"data": data})
     
     return render(request, "base.html",  {"title": "Stocks"})
 
