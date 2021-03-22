@@ -4,13 +4,11 @@
 
 {% block content %}
 
-<H1>Stock App</H1>
+<img src="{{ logo }}">
+                               
+<h2>{{ name }} ${{ price }}</h2>
 
-<form action="getStock" method="post">
-    {% csrf_token %}
-    
-    <input type="text" name="stockTicker"><br>
-    <input type="submit" value="Search">
-</form>
+<p>Volume: {{ volume }}</p>
+<p>Market Cap: {{ marketcap }}</p>
 
 {% endblock content %}

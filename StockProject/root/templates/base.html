@@ -12,6 +12,15 @@
     </head>
 
     <body>
+        <h1>Stock App</h1>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <input type="text" name="stockTicker"><br>
+            <input type="submit" value="Search">
+        </form>
+        
         {% block content %}
         {% endblock content %}
     </body>
