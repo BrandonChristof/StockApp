@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
-{% block title %}{{ title }}{% endblock title %}
+{% block title %}{{ data.longName }}{% endblock title %}
 
 
 {% block content %}
 
-<img src="{{ logo }}">
+<img src="{{ data.logo_url }}">
                                
-<h2>{{ name }} ${{ price }}</h2>
+<h2>{{ data.longName }} ${{ data.price }}</h2>
 
-<p>Volume: {{ volume }}</p>
-<p>Market Cap: {{ marketcap }}</p>
+<p>Volume: {{ data.volume }}</p>
+<p>Market Cap: {{ data.marketCap }}</p>
 
 {% endblock content %}
