@@ -12,16 +12,19 @@
     </head>
 
     <body>
-        <h1>Stock App</h1>
+        <div id="wrapper">
+            <div id="header"></div>
+            <h1 id="mainTitle">Stock App</h1>
 
-        <form method="post">
-            {% csrf_token %}
+            <form method="post" id="searchForm">
+                {% csrf_token %}
 
-            <input type="text" name="stockTicker"><br>
-            <input type="submit" value="Search">
-        </form>
-        
-        {% block content %}
-        {% endblock content %}
+                <input type="text" name="stockTicker"><br>
+                <input type="submit" value="Search">
+            </form>
+
+            {% block content %}
+            {% endblock content %}
+        </div>
     </body>
 </html>

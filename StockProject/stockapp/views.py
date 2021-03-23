@@ -3,19 +3,10 @@ from django.http import HttpResponse
 from stockapp.stockmarket import getStockData
 
 def index(request):
-    data = {}
     if request.method == "POST":
         ticker = request.POST["stockTicker"]
-        data = getStockData(ticker)
-        print(data)
-        return render(request, "stockapp/stockpage.html", {"data": data})
-    
+        data, graph_div = getStockData(ticker)
+        if data:
+            return render(request, "stockapp/stockpage.html", {"data": data, "graph_div": graph_div})
     return render(request, "base.html",  {"title": "Stocks"})
 
-
-def getStock(request):
-    if request.method == "POST":
-        ticker = request.POST["stockTicker"]
-        data = getStockData(ticker)
-        print(data)
-    return render(request, "stockapp/stockpage.html",  {"title": "Stocks"})

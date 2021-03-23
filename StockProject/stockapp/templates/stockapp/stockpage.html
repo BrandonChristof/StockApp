@@ -4,24 +4,73 @@
 
 {% block content %}
 
-<img src="{{ data.logo_url }}">
-                               
-<h2><a href={{ data.website }}>{{ data.longName }}</a> ${{ data.price }}</h2>
+<div id="stockHeader">
+    <div id="stockImage">
+        <a href={{ data.website }}><img src="{{ data.logo_url }}"></a>   
+    </div>
+    <div id="stockPrice">
+        <h2><a href={{ data.website }}>{{ data.longName }}</a> ${{ data.price }}</h2>
+    </div>
+</div>
 
-<p>Volume: {{ data.volume }}</p>
-<p>Market Cap: {{ data.marketCap }}</p>
-<p>Days Range: {{ data.dayLow }} - {{ data.dayHigh }}</p>
-<p>Market Cap: {{ data.marketCap }}</p>
-<p>EPS (TTM): {{ data.trailingEps }}</p>
-<p>PE (TTM): {{ data.trailingPE }}</p>
-<p>52 Week Range: {{ data.fiftyTwoWeekLow }} - {{ data.fiftyTwoWeekHigh }}</p>
-<p>Open: {{ data.open }}</p>
-<p>Previous Close: {{ data.previousClose }}</p>
+<div id="graph" style="margin-bottom: 0px">
+{{ graph_div|safe }}
+</div>
 
-<p>Dividend: ${{ data.dividendRate }}</p>
+<div id="stockData">
+    <table>
+        
+        <tr>
+            <td id="dataHeader">Open:</td>
+            <td id="dataPoint"><strong>${{ data.open }}</strong></td>
+            <td id="dataHeader">Volume:</td>
+            <td id="dataPoint"><strong>{{ data.volume }}</strong></td>
+            <td id="dataHeader">Market Cap:</td>
+            <td id="dataPoint"><strong>${{ data.marketCap }}</strong></td>
+        </tr>
+        <tr>
+            <td id="dataHeader">Previous Close:</td>
+            <td id="dataPoint"><strong>${{ data.previousClose }}</strong></td>
+            <td id="dataHeader">Average Volume:</td>
+            <td id="dataPoint"><strong>{{ data.averageVolume }}</strong></td>
+            <td id="dataHeader">EPS (TTM):</td>
+            <td id="dataPoint"><strong>{{ data.trailingEps }}</strong></td>
+        </tr>
+        <tr>
+            <td id="dataHeader">Days Range:</td>
+            <td id="dataPoint"><strong>${{ data.dayLow }} - ${{ data.dayHigh }}</strong></td>
+            <td id="dataHeader">200 Day Average:</td>
+            <td id="dataPoint"><strong>${{ data.twoHundredDayAverage }}</strong></td>
+            <td id="dataHeader">PE (TTM):</td>
+            <td id="dataPoint"><strong>{{ data.trailingPE }}</strong></td>
+        </tr>
+        <tr>
+            <td id="dataHeader">52 Week Range:</td>
+            <td id="dataPoint"><strong>${{ data.fiftyTwoWeekLow }} - ${{ data.fiftyTwoWeekHigh }}</strong></td>
+            <td id="dataHeader">Dividend:</td>
+            <td id="dataPoint"><strong>$ {{ data.dividendRate }}</strong></td>
+            <td id="dataHeader">PEG Ratio:</td>
+            <td id="dataPoint"><strong>{{ data.pegRatio }}</strong></td>
+        </tr>
+    </table>
+    
+    <!--
+    <p>Volume: {{ data.volume }}</p>
+    <p>Market Cap: {{ data.marketCap }}</p>
+    <p>Days Range: {{ data.dayLow }} - {{ data.dayHigh }}</p>
+    <p>EPS (TTM): {{ data.trailingEps }}</p>
+    <p>PE (TTM): {{ data.trailingPE }}</p>
+    <p>52 Week Range: {{ data.fiftyTwoWeekLow }} - {{ data.fiftyTwoWeekHigh }}</p>
+    <p>Open: {{ data.open }}</p>
+    <p>Previous Close: {{ data.previousClose }}</p>
+    <p>Dividend: ${{ data.dividendRate }}</p>
+    -->
+</div>
 
 
-<h3>Description</h3>
-<p>{{ data.longBusinessSummary }}</p>
+<div id="description">
+    <h3>Description</h3>
+    <p>{{ data.longBusinessSummary }}</p>
+</div>
 
 {% endblock content %}
