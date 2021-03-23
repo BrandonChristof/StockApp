@@ -6,9 +6,22 @@
 
 <img src="{{ data.logo_url }}">
                                
-<h2>{{ data.longName }} ${{ data.price }}</h2>
+<h2><a href={{ data.website }}>{{ data.longName }}</a> ${{ data.price }}</h2>
 
 <p>Volume: {{ data.volume }}</p>
 <p>Market Cap: {{ data.marketCap }}</p>
+<p>Days Range: {{ data.dayLow }} - {{ data.dayHigh }}</p>
+<p>Market Cap: {{ data.marketCap }}</p>
+<p>EPS (TTM): {{ data.trailingEps }}</p>
+<p>PE (TTM): {{ data.trailingPE }}</p>
+<p>52 Week Range: {{ data.fiftyTwoWeekLow }} - {{ data.fiftyTwoWeekHigh }}</p>
+<p>Open: {{ data.open }}</p>
+<p>Previous Close: {{ data.previousClose }}</p>
+
+<p>Dividend: ${{ data.dividendRate }}</p>
+
+
+<h3>Description</h3>
+<p>{{ data.longBusinessSummary }}</p>
 
 {% endblock content %}
