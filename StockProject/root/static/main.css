@@ -18,9 +18,34 @@ body {
     color: #474747;
 }
 
+#stockImage {
+    float: left;
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 128px;
+    height: 128px;
+    position: relative;
+}
+
+img {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
 h2 {
-    font-size: 30px;
-    margin-left: 10px;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+h3 {
+    font-size: 35px;
+    margin-top: 0px;
+}
+
+h4 {
+    font-size: 20px; 
 }
 
 #mainTitle {
@@ -36,19 +61,13 @@ h2 {
 }
 
 #stockHeader {
-    margin-bottom: 150px;
-}
-
-#stockImage {
-    float: left;
-    margin-left: 20px;
-    margin-top: 20px;
+    margin-bottom: 160px;
 }
 
 #stockPrice {
     float: left;
     margin-left: 10px;
-    margin-top: 42px;
+    margin-top: 40px;
 }
 
 #stockData {

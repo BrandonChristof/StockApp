@@ -6,6 +6,7 @@ import yfinance as yf
 import plotly.express as px
 import plotly.offline
 
+#Dictionary Headers called from the yfinance API
 dataPoints = ["volume",
               "averageVolume",
               "twoHundredDayAverage",
@@ -29,7 +30,7 @@ def getCurrentPrice(stock):
     today = stock.history(period='1d')
     return round(today['Close'][0], 2)
 
-#Creates and returns a plotly graph of a given stocks max price history
+#Creates and returns a plotly graph of the max price history of a given stock
 def getGraph(stock):
     hist = stock.history(period="max")
     hist = hist.reset_index()
@@ -39,7 +40,16 @@ def getGraph(stock):
     graph = plotly.offline.plot(fig, auto_open = False, output_type="div")
     return graph
 
-#Returns a dictionary of information of each component in dataPoints
+#Returns price change between previous close and current price
+def getDollarChange(data):
+    return round(float(data["price"]) - float(data["previousClose"]), 2)
+
+#Returns percentage change between previous close and current price
+def getPercentChange(data):
+    return round((float(data["dollarChange"]) / float(data["previousClose"]))*100, 2)
+    
+
+#Returns a dictionary of information of each component in the dataPoints list
 def getDataDict(stock):
     data = {}
     try:
@@ -50,11 +60,17 @@ def getDataDict(stock):
         try:
             if stock.info[d]:
                 temp = round(stock.info[d], 2)
-                data[d] = "{:,}".format(temp)
+                data[d] = "{:,}".format(temp) #Adds commas for large numbers
             else:
                 data[d] = "---"
         except:
-            data[d] = stock.info[d]
+            try:
+                data[d] = stock.info[d]
+            except:
+                data[d] = "N/A"
+
+    data["dollarChange"] = getDollarChange(data)
+    data["percentChange"] = getPercentChange(data)
     return data
 
 def getStockData(ticker):

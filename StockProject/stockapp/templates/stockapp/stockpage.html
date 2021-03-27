@@ -8,8 +8,17 @@
     <div id="stockImage">
         <a href={{ data.website }}><img src="{{ data.logo_url }}"></a>   
     </div>
+    
     <div id="stockPrice">
-        <h2><a href={{ data.website }}>{{ data.longName }}</a> ${{ data.price }}</h2>
+        <h2><a href={{ data.website }}>{{ data.longName }}</a></h2> 
+        <h3>
+            ${{ data.price }}
+            {% if data.dollarChange >= 0 %}
+                <span style="color: green;">{{ data.dollarChange }} ({{ data.percentChange }}%)</span>
+            {% else %}
+                <span style="color: red;">{{ data.dollarChange }} ({{ data.percentChange }}%)</span>
+            {% endif %}
+        </h3>
     </div>
 </div>
 
@@ -53,23 +62,11 @@
             <td id="dataPoint"><strong>{{ data.pegRatio }}</strong></td>
         </tr>
     </table>
-    
-    <!--
-    <p>Volume: {{ data.volume }}</p>
-    <p>Market Cap: {{ data.marketCap }}</p>
-    <p>Days Range: {{ data.dayLow }} - {{ data.dayHigh }}</p>
-    <p>EPS (TTM): {{ data.trailingEps }}</p>
-    <p>PE (TTM): {{ data.trailingPE }}</p>
-    <p>52 Week Range: {{ data.fiftyTwoWeekLow }} - {{ data.fiftyTwoWeekHigh }}</p>
-    <p>Open: {{ data.open }}</p>
-    <p>Previous Close: {{ data.previousClose }}</p>
-    <p>Dividend: ${{ data.dividendRate }}</p>
-    -->
 </div>
 
 
 <div id="description">
-    <h3>Description</h3>
+    <h4>Description</h4>
     <p>{{ data.longBusinessSummary }}</p>
 </div>
 
